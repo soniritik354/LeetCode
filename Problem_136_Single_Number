@@ -1,0 +1,28 @@
+//Using maps
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        map<int,int> m;
+        for(int i=0;i<nums.size();i++){
+            m[nums[i]]++;
+        }
+        int ans = 0;
+        for(auto i=m.begin();i!=m.end();i++){
+            if(i->second==1)
+                ans = i->first;
+        }
+        return ans;
+    }
+};
+
+//Using the properties of XOR. This solution is more efficient in time as well as space compared to the aboe one.
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans = 0;
+        for(int i=0;i<nums.size();i++){
+            ans ^= nums[i];
+        }
+        return ans;
+    }
+};
